@@ -11,7 +11,7 @@ class AeriesLogin(object):
             "portalAccountPassword",
             "ctl00_MainContent_lblWelcome"
         )
-        self.driver = webdriver.Firefox()
+        self.driver = webdriver.PhantomJS()
         self.username = username
         self.password = password
         self._write_data()
@@ -27,10 +27,6 @@ class AeriesLogin(object):
         pass_field = self.driver.find_element_by_id(self.elem[1])
         pass_field.send_keys(self.password)
         pass_field.send_keys(Keys.RETURN)
-
-        self.driver.get("https://aeries.lgsuhsd.org/aeries.net" + \
-        "/GradebookSummary.aspx")
-        time.sleep(2)
 
         return self.driver
 
