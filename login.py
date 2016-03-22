@@ -2,7 +2,17 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
 
+class AeriesLoginException(Exception):
+
+    def __init__(self, message):
+        self.prefix = "AeriesLoginException"
+        self.message = message
+
+    def __str__(self):
+        return "%s: %s" % (self.prefix, self.message)
+
 class AeriesLogin(object):
+
     def __init__(self, username, password):
         self.url = "https://aeries.lgsuhsd.org/" + \
         "aeries.net/Loginparent.aspx"
@@ -32,6 +42,10 @@ class AeriesLogin(object):
 
     def _write_data(self):
         driver = self._authenticate()
-        time.sleep(5)
-        with open("source.txt", "w+") as f:
-            f.write(driver.page_source)
+        time.sleep(2)
+
+        if self.driver.current_url == self.url:
+            raise AeriesLoginException("Wrong username or password")
+        else:
+            with open("source.txt", "w+") as f:
+                f.write(driver.page_source)
