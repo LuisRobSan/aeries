@@ -3,7 +3,6 @@ from sqlite3 import connect
 import re
 
 def parse_gradebook(source, c):
-    parsed_gradebook = dict()
     name, grade = (0, 4)
     soup = BeautifulSoup(source, "html.parser")
     rows = soup.find_all("tr", {"class":"k-alt"})
