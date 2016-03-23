@@ -19,13 +19,10 @@ def parse_gradebook(source, c):
             )]
             c.executemany("INSERT INTO grades VALUES (?, ?)", data)
 
-if __name__ == "__main__":
+def run(conn, c):
     with open("source.txt", "r") as f:
         source = f.read()
-        conn = connect("grades.db")
-        c = conn.cursor()
         c.execute("DROP TABLE IF EXISTS grades")
-        c.execute("CREATE TABLE grades (course text, grade real)")
+        c.execute("CREATE TABLE grades (course text, grade text)")
         parse_gradebook(source, c)
         conn.commit()
-        conn.close()
