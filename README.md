@@ -1,7 +1,5 @@
 # Aeries
 
-## Overview
-
 Desktop application for viewing your grades (version 1.0). This program only supports schools that use the Aeries Student Information System by Eagle Software.
 
 ## Requirements
@@ -11,7 +9,7 @@ External dependencies for this project are included in `requirements.txt`. They 
 * Beautiful Soup 4.4.1
 * Selenium 2.53.1
 
-# Usage
+## Usage
 
 Fork the repository and move the folder to the destination you would like it to be in. Open up a Terminal window and follow these commands.
 
