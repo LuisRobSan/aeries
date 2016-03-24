@@ -1,4 +1,8 @@
-from tkinter import Tk, Frame, Label, Entry, Button, messagebox
+try:
+    from tkinter import Tk, Frame, Label, Entry, Button, messagebox
+except:
+    from Tkinter import Tk, Frame, Label, Entry, Button
+    import tkMessageBox
 from sqlite3 import connect
 import login
 import parser
@@ -8,7 +12,11 @@ class AeriesAppException(Exception):
 
     def __init__(self, message):
         self.prefix = "Error"
-        messagebox.showerror(self.prefix, message)
+
+        try:
+            messagebox.showerror(self.prefix, message)
+        except:
+            tkMessageBox.showerror(self.prefix, message)
 
 class AeriesApp(Frame):
 
